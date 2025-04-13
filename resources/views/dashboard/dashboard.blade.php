@@ -36,7 +36,7 @@
                            <i class="ri-team-fill text-4xl bg-blue-500 rounded-md text-white p-2"></i>
                         </span>
                         </h1>
-                        <p class="text-slate-600">On the day of {{$arr['sub']}}</p>
+                        <p class="text-slate-600 font-ubuntuMono">On the day of {{$arr['sub']}}</p>
                     </div>
                 @endforeach
             </div>

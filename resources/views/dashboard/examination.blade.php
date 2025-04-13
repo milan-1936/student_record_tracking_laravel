@@ -10,7 +10,7 @@
                         [
                             'heading'=> "Passed Student",
                             'main' => '90%',
-                            'sub' => 'in the class test of Baisakh'
+                            'sub' => 'in the test of Baisakh'
                         ],
                         [
                             'heading'=> "Passed Student Percentage",
@@ -36,7 +36,7 @@
                            <i class="ri-team-fill text-4xl bg-blue-500 rounded-md text-white p-2"></i>
                         </span>
                         </h1>
-                        <p class="text-slate-600">On the day of {{$arr['sub']}}</p>
+                        <p class="text-slate-500 text-sm">On the day of {{$arr['sub']}}</p>
                     </div>
                 @endforeach
             </div>
@@ -59,7 +59,7 @@
             <hr class="border-2 my-5">
             {{--buttons--}}
             <div class="flex gap-5">
-                <a href="" class="flex gap-2 items-center bg-blue-500 rounded-xl px-2 py-1 text-white">
+                <a href="{{route('examination.create')}}" class="flex gap-2 items-center bg-blue-500 rounded-xl px-2 py-1 text-white">
                     <i class="ri-add-circle-fill text-xl "></i>
                     <button class="">Create Exam</button>
                 </a>

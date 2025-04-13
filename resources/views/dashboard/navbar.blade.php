@@ -11,6 +11,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     {{-- CDN link of tailwindcss --}}
@@ -26,7 +27,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
-<body class="max-w-7xl mx-auto">
+<body class="max-w-7xl mx-auto font-ubuntuMono">
 <div class="flex">
 {{-- side navigation --}}
 <div class="min-w-80 max-w-100 bg-slate-200 h-screen flex flex-col justify-between drop-shadow-xl">
@@ -41,12 +42,12 @@
 
 
     {{-- menues and tabs --}}
-    <div class="flex flex-col h-full ml-10 gap-5 mt-10 ">
-        <a href="#" class="flex gap-4 items-center">
+    <div class="flex flex-col h-full ml-10 gap-5 mt-10 font-ubuntuMono ">
+        <a href="{{Route('dashboard')}}" class="flex gap-4 items-center">
             <i class="ri-speed-up-line text-xl text-slate-700"></i>
             <span class="text-lg text-slate-600">Dashboard</span>
         </a>
-        <a href="#" class="flex gap-4 items-center">
+        <a href="{{route('examination')}}" class="flex gap-4 items-center">
             <i class="ri-book-open-line text-xl text-slate-700"></i>
             <span class="text-lg text-slate-600">Examination</span>
         </a>
@@ -58,7 +59,7 @@
             <i class="ri-chat-1-line text-xl text-slate-700"></i>
             <span class="text-lg text-slate-600">Send Messages</span>
         </a>
-        <a href="#" class="flex gap-4 items-center">
+        <a href="{{route('attendance')}}" class="flex gap-4 items-center">
             <i class="ri-fingerprint-line text-xl text-slate-700"></i>
             <span class="text-lg text-slate-600">Attendance</span>
         </a>
