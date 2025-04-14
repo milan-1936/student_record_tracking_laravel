@@ -22,4 +22,4 @@ Route::get('/attendance', function(){
 
 Route::get('/profile', function(){
     return view('dashboard.student_profile');
-});
+})->name('profile');

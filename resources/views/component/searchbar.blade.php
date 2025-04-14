@@ -1,5 +1,5 @@
 
-<div class="flex items-center gap-2 border-2 border-slate-100   w-full px-5">
+<div class="flex items-center gap-2 border-slate-100   w-full px-5">
     <label for="search" class="cursor-pointer">
         <i class="ri-search-line text-blue-500   text-xl"></i>
     </label>

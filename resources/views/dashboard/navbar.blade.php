@@ -63,7 +63,7 @@
             <i class="ri-fingerprint-line text-xl text-slate-700"></i>
             <span class="text-lg text-slate-600">Attendance</span>
         </a>
-        <a href="#" class="flex gap-4 items-center">
+        <a href="{{route('profile')}}" class="flex gap-4 items-center">
             <i class="ri-profile-line text-xl text-slate-700"></i>
             <span class="text-lg text-slate-600">View Student Profile</span>
         </a>
