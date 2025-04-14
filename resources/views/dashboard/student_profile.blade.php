@@ -72,6 +72,9 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="w-full flex justify-end mt-5">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Print</button>
+            </div>
         </div>
     </div>
 @endsection
