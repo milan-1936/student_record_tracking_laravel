@@ -24,45 +24,49 @@
             'guardian' => 'Sajal ko Baba Bista',
             'total_abs' => 25,
         ],
-]
+    ];
 @endphp
-<div>
-    <div>
-        <table class="w-full ">
-            <tr class="text-left text-slate-500 font-light py-4">
-                <th>STUDENT</th>
-                <th>PARENTS NAME</th>
-                <th>TOTAL_ABSENT</th>
-                <th>PROFILE</th>
-            </tr>
-            @foreach($students as $student)
-                @php
-                    $avt = explode(' ', $student['name']);
-                    $avt = $avt[0][0].$avt[1][0];
-                @endphp
 
-                <tr class=" odd:bg-slate-100 even:bg-slate-50 ">
-                    <td class="flex gap-3 items-center my-3">
-                        {{--This is avatar--}}
-                        <span class="rounded-full p-3 bg-blue-200">{{$avt}}</span>
-                        <div>
-                            <p>{{$student['name']}}</p>
-                            <p class="text-slate-400">+977 {{$student['contact']}}</p>
-                        </div>
-                    </td>
-                    <td class="">{{$student['guardian']}}</td>
-                    <td class="text-slate-400">
-                        <span class="text-slate-500 font-bold">
-                            {{--This is total absent--}}
-                            {{$student['total_abs']}}
-                        </span> days</td>
-                    <td class="">
-                        <a href="">
-                            <button class="bg-blue-500 text-white px-4 py-1 rounded">View</button>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-        </table>
-    </div>
+<div class="p-6 bg-gray-900 text-white rounded-lg shadow-lg overflow-x-auto">
+    <h2 class="text-2xl font-semibold text-indigo-400 mb-4">Student Attendance Summary</h2>
+    <table class="w-full text-left min-w-[700px]">
+        <thead>
+        <tr class="text-indigo-300 border-b border-indigo-600 uppercase text-sm">
+            <th class="py-3">Student</th>
+            <th class="py-3">Parent's Name</th>
+            <th class="py-3">Total Absent</th>
+            <th class="py-3">Profile</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($students as $student)
+            @php
+                $avt = explode(' ', $student['name']);
+                $avt = strtoupper($avt[0][0] . ($avt[1][0] ?? ''));
+            @endphp
+            <tr class="border-b border-gray-700 hover:bg-gray-800 transition-all duration-200">
+                <td class="flex items-center gap-4 py-4">
+                    <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-semibold">
+                        {{ $avt }}
+                    </div>
+                    <div>
+                        <p class="font-medium">{{ $student['name'] }}</p>
+                        <p class="text-sm text-gray-400">+977 {{ $student['contact'] }}</p>
+                    </div>
+                </td>
+                <td class="py-4">{{ $student['guardian'] }}</td>
+                <td class="py-4 text-indigo-300">
+                    <span class="font-bold">{{ $student['total_abs'] }}</span> days
+                </td>
+                <td class="py-4">
+                    <a href="#" class="inline-block">
+                        <button class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow">
+                            View
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 </div>

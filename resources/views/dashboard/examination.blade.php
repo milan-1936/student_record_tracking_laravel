@@ -1,10 +1,15 @@
 @extends('dashboard.navbar')
+@php
+    $lists = [
+        'Baisakh', 'jeth', 'asar', 'First term examination'
+        ];
+@endphp
 @section('content')
-    <div class="flex bg-slate-100 h-full w-full">
+    <div class="flex bg-gray-900 text-white min-h-screen w-full">
         <div class="wrapper w-full px-[3%] mt-5">
-            {{--      Overview Card section      --}}
-            <div class="my-5 gap-5 grid grid-cols-1 xl:grid-cols-3">
 
+            {{-- Overview Card section --}}
+            <div class="my-5 gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                 @php
                     $array = [
                         [
@@ -22,55 +27,49 @@
                             'main'=> 25,
                             'sub' => '2025/06/8'
                         ],
-
-                ];
+                    ];
                 @endphp
 
-                {{--first card--}}
                 @foreach($array as $arr)
-                    <div class="first_card w-70 bg-slate-50 rounded-xl p-4 drop-shadow-lg overflow-hidden">
-                        <h1 class="text-slate-600 font-semibold">{{$arr['heading']}}</h1>
-                        <h1 class="flex justify-between items-center">
-                            <span class="text-blue-500 font-bold text-6xl">{{$arr['main']}}</span>
-                            <span>
-                           <i class="ri-team-fill text-4xl bg-blue-500 rounded-md text-white p-2"></i>
-                        </span>
-                        </h1>
-                        <p class="text-slate-500 text-sm">On the day of {{$arr['sub']}}</p>
+                    <div class="bg-gray-800 rounded-xl p-5 shadow-lg hover:shadow-indigo-500/20 transition">
+                        <h1 class="text-indigo-400 font-semibold text-lg mb-2">{{$arr['heading']}}</h1>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-300 font-bold text-5xl">{{$arr['main']}}</span>
+                            <i class="ri-team-fill text-4xl bg-indigo-600 rounded-md text-white p-2"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-2">On the day of {{$arr['sub']}}</p>
                     </div>
                 @endforeach
             </div>
 
-            @php
-                $lists = [
-                    'Baisakh', 'jeth', 'asar', 'First term examination'
-                    ];
-            @endphp
-            <hr class="border-2 my-5">
-            {{--List of Exams--}}
-            <div class="flex gap-5">
-                {{--This div is all about list of exam--}}
+            <hr class="border-indigo-700 my-5">
+
+            {{-- List of Exams + Progression Chart --}}
+            <div class="flex flex-col lg:flex-row gap-5">
+                {{-- This div is all about list of exams --}}
                 @include('component.listofexams')
 
-                {{--This div is all about chart of progression--}}
+                {{-- This div is all about chart of progression --}}
                 @include('component.progressionchart')
             </div>
 
-            <hr class="border-2 my-5">
-            {{--buttons--}}
-            <div class="flex gap-5">
-                <a href="{{route('examination.create')}}" class="flex gap-2 items-center bg-blue-500 rounded-xl px-2 py-1 text-white">
-                    <i class="ri-add-circle-fill text-xl "></i>
-                    <button class="">Create Exam</button>
-                </a>
-                <a href="" class="flex gap-2 items-center bg-blue-500 rounded-xl px-2 py-1 text-white">
-                    <i class="ri-corner-down-left-line text-xl"></i>
-                    <button class="">Enter Marks</button>
-                </a>
-                <a href="" class="flex gap-2 items-center bg-blue-500 rounded-xl px-2 py-1 text-white">
-                    <i class="ri-printer-line text-xl "></i>
-                    <button class="">Publish Result</button>
-                </a>
+            <hr class="border-indigo-700 my-5">
 
+            {{-- Buttons --}}
+            <div class="flex flex-wrap gap-4">
+                <a href="{{ route('examination.create') }}" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                    <i class="ri-add-circle-fill text-xl"></i>
+                    <span>Create Exam</span>
+                </a>
+                <a href="#" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                    <i class="ri-corner-down-left-line text-xl"></i>
+                    <span>Enter Marks</span>
+                </a>
+                <a href="#" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                    <i class="ri-printer-line text-xl"></i>
+                    <span>Publish Result</span>
+                </a>
+            </div>
         </div>
+    </div>
 @endsection
