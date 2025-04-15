@@ -23,3 +23,7 @@ Route::get('/attendance', function(){
 Route::get('/profile', function(){
     return view('dashboard.student_profile');
 })->name('profile');
+
+Route::get('/student', function(){
+    return view('dashboard.add_student');
+})->name('add_student');

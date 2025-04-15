@@ -133,6 +133,10 @@
                 <i class="ri-profile-line text-xl"></i>
                 <span>Student Profiles</span>
             </a>
+            <a href="{{ route('add_student') }}" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+                <i class="ri-add-line text-xl"></i>
+                <span>Add Student</span>
+            </a>
 
             {{-- Settings Section --}}
             <div class="mt-4 pt-4 border-t border-gray-800">
