@@ -27,3 +27,7 @@ Route::get('/profile', function(){
 Route::get('/student', function(){
     return view('dashboard.add_student');
 })->name('add_student');
+
+Route::get('/marks_update', function(){
+    return view('dashboard.enter_marks');
+})->name('marks_update');

@@ -1,5 +1,6 @@
 @extends('dashboard.navbar')
 @section('content')
+<h1 class="text-xl pb-2" >Attendance of the <span class="bg-violet-200 px-2 py-1 text-gray-800 rounded-full text-lg font-bold">{{now()->format('y, F, l')}}</span> </h1>
     <div class="w-full font-Poppins bg-gray-900 min-h-screen text-gray-200">
         <table class="w-full border border-gray-700">
             <thead class="bg-gray-800">

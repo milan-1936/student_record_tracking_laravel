@@ -61,7 +61,7 @@
                     <i class="ri-add-circle-fill text-xl"></i>
                     <span>Create Exam</span>
                 </a>
-                <a href="#" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                <a href="{{ route('marks_update') }}" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
                     <i class="ri-corner-down-left-line text-xl"></i>
                     <span>Enter Marks</span>
                 </a>

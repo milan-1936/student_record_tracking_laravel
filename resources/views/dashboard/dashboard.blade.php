@@ -38,8 +38,8 @@
                             'textColor' => 'text-emerald-400'
                         ],
                         [
-                            'heading' => "राम संकर भोला",
-                            'main' => 25,
+                            'heading' => "Total Student",
+                            'main' => 40,
                             'sub' => '2025/06/8',
                             'icon' => 'ri-calendar-check-line',
                             'color' => 'bg-amber-600',

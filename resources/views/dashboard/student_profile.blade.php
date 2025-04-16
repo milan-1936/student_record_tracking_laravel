@@ -26,7 +26,7 @@
             <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow-md">
                 <h1 class="text-xl text-center font-bold text-white mb-4">Overall School Performance</h1>
                 <div class="flex w-full justify-between mb-4">
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors font-medium">All</a>
+                    <a href="#" class="text-gray-800 hover:text-gray-900 transition-colors font-medium bg-indigo-500 px-3 rounded-full">All</a>
                     <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">English</a>
                     <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">Nepali</a>
                     <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">Math</a>
@@ -35,7 +35,7 @@
                     <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">OPT I</a>
                     <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">OPT II</a>
                 </div>
-                <div>
+                <div class="w-full pb-5">
                     @include('component.progressionchart')
                 </div>
             </div>

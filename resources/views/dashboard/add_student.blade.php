@@ -4,10 +4,13 @@
         <div class="max-w-3xl">
             <form action="" method="POST" enctype="multipart/form-data" class="bg-gray-800 p-8 rounded-md grid grid-cols-3 items-start">
                 @csrf
-                <div class="w-[35mm] h-[45mm] bg-blue-300 rounded-xl">
-                    <img src="" alt="" id="d_profile" class="rounded-xl object-cover w-full h-full">
-                    <h1 id="d_name" class="w-full text-center">Name</h1>
-                </div>
+                <label for="profile" class="col-span-1">
+                    <div  class="w-[35mm] h-[45mm] bg-blue-300 rounded-xl">
+
+                        <img src="" alt="" id="d_profile" class="rounded-xl object-cover w-full h-full">
+                        <h1 id="d_name" class="w-full text-center">Name</h1>
+                    </div>
+                </label>
                 <div class="col-span-2">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="border border-gray-700 bg-gray-800 text-white px-4 py-2 rounded-md mb-4 w-full" required>
