@@ -39,7 +39,7 @@
                         ],
                         [
                             'heading' => "Total Student",
-                            'main' => 40,
+                            'main' => $total_students,
                             'sub' => '2025/06/8',
                             'icon' => 'ri-calendar-check-line',
                             'color' => 'bg-amber-600',

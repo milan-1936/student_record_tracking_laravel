@@ -1,7 +1,7 @@
 
 
 <div class="p-6 bg-gray-900 text-white rounded-lg shadow-lg overflow-x-auto">
-    <h2 class="text-2xl font-semibold text-indigo-400 mb-4">Student Attendance Summary</h2>
+    <h2 class="text-2xl font-semibold text-indigo-400 mb-4">Students</h2>
 
     <table class="w-full text-left min-w-[700px]">
         <thead>

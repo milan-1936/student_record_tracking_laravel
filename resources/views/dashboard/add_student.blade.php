@@ -13,6 +13,8 @@
                     </div>
                 </label>
                 <div class="col-span-2">
+                    <label for="rn">Roll Number</label>"
+                    <input type="text" name="rn" id="rn" class="border border-gray-700 bg-gray-800 text-white px-4 py-2 rounded-md mb-4 w-full" required>
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="border border-gray-700 bg-gray-800 text-white px-4 py-2 rounded-md mb-4 w-full" required>
                     <label for="contact">Contact</label>

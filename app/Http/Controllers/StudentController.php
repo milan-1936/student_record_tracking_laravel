@@ -14,6 +14,7 @@ class StudentController extends Controller
 
     public function create(Request $request){
         $data = $request->validate([
+            'rn' => 'required|integer',
            'name' => 'required|string|max:255',
            'contact' => 'required|string|max:255',
            'guardian' => 'required|string|max:255',
