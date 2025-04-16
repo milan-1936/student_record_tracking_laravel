@@ -1,8 +1,9 @@
 @extends('dashboard.navbar')
+@include('component.alert')
 @section('content')
     <div class="flex justify-center items-center bg-gray-900 w-full">
         <div class="max-w-3xl">
-            <form action="" method="POST" enctype="multipart/form-data" class="bg-gray-800 p-8 rounded-md grid grid-cols-3 items-start">
+            <form action=" {{ route('student.store') }} " method="POST" enctype="multipart/form-data" class="bg-gray-800 p-8 rounded-md grid grid-cols-3 items-start">
                 @csrf
                 <label for="profile" class="col-span-1">
                     <div  class="w-[35mm] h-[45mm] bg-blue-300 rounded-xl">

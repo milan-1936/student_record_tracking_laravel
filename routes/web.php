@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-})->name('dashboard');
+Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
 
 
 Route::get('/examination', function(){
@@ -24,9 +24,8 @@ Route::get('/profile', function(){
     return view('dashboard.student_profile');
 })->name('profile');
 
-Route::get('/student', function(){
-    return view('dashboard.add_student');
-})->name('add_student');
+Route::get('/student', [StudentController::class, 'index'])->name('add_student');
+Route::post('/student/store', [StudentController::class, 'create'])->name('student.store');
 
 Route::get('/marks_update', function(){
     return view('dashboard.enter_marks');

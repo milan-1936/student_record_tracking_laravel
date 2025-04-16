@@ -4,6 +4,7 @@
         'Baisakh', 'jeth', 'asar', 'First term examination'
         ];
 @endphp
+@include('component.alert')
 @section('content')
     <div class="flex bg-gray-900 text-white min-h-screen w-full">
         <div class="wrapper w-full px-[3%] mt-5">
