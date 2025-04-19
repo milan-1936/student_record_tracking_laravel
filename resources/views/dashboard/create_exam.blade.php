@@ -1,4 +1,5 @@
 @extends('dashboard.navbar')
+@include('component.alert')
 @section('content')
     <div class="flex justify-center items-center bg-gray-900 px-[3%]">
         <div class="w-full">
@@ -6,10 +7,10 @@
                 <h1 class="text-lg text-center font-bold py-4">Create Examination Form</h1>
             </div>
             <div class="px-5 mx-0 bg-gray-800 mt-5 rounded-b-xl shadow-lg">
-                <form action="" method="GET" class="text-gray-200 flex flex-col gap-4 pb-5">
+                <form action=" {{ route('examination.store') }} " method="POST" class="text-gray-200 flex flex-col gap-4 pb-5">
                     @csrf
                     <label for="exam_name" class="mt-4">Exam Name</label>
-                    <input type="text" name="exam_name" id="exam_name" class="border border-gray-700 bg-gray-700 rounded-md p-2 w-full mb-4" placeholder="Enter exam name">
+                    <input type="text" name="name" id="exam_name" class="border border-gray-700 bg-gray-700 rounded-md p-2 w-full mb-4" placeholder="Enter exam name">
 
                     {{--full marks--}}
                     <div class="justify-between gap-5 text-gray-200 grid grid-cols-8 ">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,6 @@ Route::post('/student/store', [StudentController::class, 'create'])->name('stude
 Route::get('/marks_update', function(){
     return view('dashboard.enter_marks');
 })->name('marks_update');
+
+
+Route::post('/examination/create', [ExamController::class, 'StoreExam'])->name('examination.store');

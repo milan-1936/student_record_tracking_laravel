@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class students extends Model
+class FMExamSubject extends Model
 {
     protected $guarded = [];
 
     public function obtainedMarks(){
-        return $this->hasMany(ObtMarks::class);
+        return $this->hasMany(ObtMarks::class, 'fm_exam_subjct_id');
     }
 }
