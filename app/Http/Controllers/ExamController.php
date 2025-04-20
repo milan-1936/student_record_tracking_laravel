@@ -4,20 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Examination;
 use App\Models\FMExamSubject;
+use App\Models\students;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
 {
     public function StoreExam(Request $request){
-
         $exam = $request->validate([
             'name'=> 'required'
             ]
         );
 
         Examination::create($exam);
-
-
 
         $fms = $request->validate([
                 'english'=> 'required|numeric',
@@ -30,8 +28,21 @@ class ExamController extends Controller
             ]
         );
 
+        $fms['exam_id'] = Examination::where('name', $request->name)->first()->id;
         FMExamSubject::create($fms);
-
         return redirect()->back()->with('message', 'Exam Added Successfully');
+    }
+
+
+    public function ShowExams(){
+        $exams = Examination::latest()->limit(5)->get();
+        return view('dashboard.examination', compact('exams'));
+    }
+
+    public function MarkEntryShow(){
+        $exams = FMExamSubject::where('exam_id', Examination::latest()->first()->id)->get();
+        $examName = Examination::where('id', Examination::latest()->first()->id)->first();
+        $students = students::all();
+        return view('dashboard.enter_marks', compact('students', 'exams'));
     }
 }

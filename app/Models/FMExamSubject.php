@@ -11,4 +11,7 @@ class FMExamSubject extends Model
     public function obtainedMarks(){
         return $this->hasMany(ObtMarks::class, 'fm_exam_subjct_id');
     }
+    public function examination(){
+        return $this->belongsTo(Examination::class, 'exam_id');
+    }
 }

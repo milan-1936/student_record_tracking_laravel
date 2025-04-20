@@ -1,9 +1,4 @@
 @extends('dashboard.navbar')
-@php
-    $lists = [
-        'Baisakh', 'jeth', 'asar', 'First term examination'
-        ];
-@endphp
 @include('component.alert')
 @section('content')
     <div class="flex bg-gray-900 text-white min-h-screen w-full">
@@ -58,15 +53,18 @@
 
             {{-- Buttons --}}
             <div class="flex flex-wrap gap-4">
-                <a href="{{ route('examination.create') }}" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                <a href="{{ route('examination.create') }}"
+                   class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
                     <i class="ri-add-circle-fill text-xl"></i>
                     <span>Create Exam</span>
                 </a>
-                <a href="{{ route('marks_update') }}" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                <a href="{{ route('marks_update') }}"
+                   class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
                     <i class="ri-corner-down-left-line text-xl"></i>
                     <span>Enter Marks</span>
                 </a>
-                <a href="#" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                <a href="#"
+                   class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
                     <i class="ri-printer-line text-xl"></i>
                     <span>Publish Result</span>
                 </a>

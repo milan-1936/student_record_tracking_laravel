@@ -6,7 +6,7 @@
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
 
-        const label = @json($lists);
+        const label = @json($exams);
 
         // Optional: resize canvas to match container
         Chart.defaults.responsive = true;
@@ -15,7 +15,7 @@
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: label,
+                labels: label.map(exam => exam.name), // Use the exam names as labels
                 datasets: [{
                     label: 'CGPA',
                     data: [65, 59, 80, 81, 56, 55, 40],

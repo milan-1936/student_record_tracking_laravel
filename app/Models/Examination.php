@@ -11,7 +11,7 @@ class Examination extends Model
         return $this->hasMany(FMExamSubject::class, 'exam_id');
     }
 
-    public function fmExamSubject(){
-        return $this->belongsTo(FMExamSubject::class);
+    public function obtainedMarks(){
+        return $this->hasMany(ObtMarks::class, 'exam_id');
     }
 }

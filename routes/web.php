@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
 
 
-Route::get('/examination', function(){
-    return view('dashboard.examination');
-})->name('examination');
+Route::get('/examination', [ExamController::class, 'ShowExams'])->name('examination');
 
 
 Route::get('/examination/create', function(){
@@ -28,9 +26,7 @@ Route::get('/profile', function(){
 Route::get('/student', [StudentController::class, 'index'])->name('add_student');
 Route::post('/student/store', [StudentController::class, 'create'])->name('student.store');
 
-Route::get('/marks_update', function(){
-    return view('dashboard.enter_marks');
-})->name('marks_update');
+Route::get('/marks_update', [ExamController::class, 'MarkEntryShow'])->name('marks_update');
 
 
 Route::post('/examination/create', [ExamController::class, 'StoreExam'])->name('examination.store');
