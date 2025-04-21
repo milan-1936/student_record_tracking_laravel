@@ -46,4 +46,23 @@ class ExamController extends Controller
         $students = students::all();
         return view('dashboard.enter_marks', compact('students', 'exams', 'fms'));
     }
+
+    public function MarkStore(Request $request){
+        $data=$request->all();
+        $data = $data['student'];
+        foreach($data as $studentData) {
+            $studentId = $studentData['student_id'];
+            $english = $studentData['english'];
+            $nepali = $studentData['nepali'];
+            $math = $studentData['math'];
+            $science = $studentData['science'];
+            $social = $studentData['social'];
+            $opti = $studentData['opti'];
+            $optii = $studentData['optii'];
+            $fmExamSubjctId=$studentData['examid'];
+
+        }
+        dd($request->all());
+
+    }
 }

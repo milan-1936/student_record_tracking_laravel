@@ -27,6 +27,6 @@ Route::get('/student', [StudentController::class, 'index'])->name('add_student')
 Route::post('/student/store', [StudentController::class, 'create'])->name('student.store');
 
 Route::get('/marks_update', [ExamController::class, 'MarkEntryShow'])->name('marks_update');
-
+Route::post('/marks_enter', [ExamController::class, 'MarkStore'])->name('marks_enter');
 
 Route::post('/examination/create', [ExamController::class, 'StoreExam'])->name('examination.store');
