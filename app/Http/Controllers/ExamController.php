@@ -35,14 +35,15 @@ class ExamController extends Controller
 
 
     public function ShowExams(){
+
         $exams = Examination::latest()->limit(5)->get();
         return view('dashboard.examination', compact('exams'));
     }
 
     public function MarkEntryShow(){
+        $fms = FMExamSubject::all();
         $exams = FMExamSubject::where('exam_id', Examination::latest()->first()->id)->get();
-        $examName = Examination::where('id', Examination::latest()->first()->id)->first();
         $students = students::all();
-        return view('dashboard.enter_marks', compact('students', 'exams'));
+        return view('dashboard.enter_marks', compact('students', 'exams', 'fms'));
     }
 }
