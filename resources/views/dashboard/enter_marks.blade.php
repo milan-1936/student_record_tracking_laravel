@@ -1,10 +1,11 @@
 @extends('dashboard.navbar')
-
+@include('component.alert')
 @section('content')
     <div class="max-w-7xl">
         <h1 class="font-semibold text-gray-400 text-xl">
             Enter Marks of the {{$exams[0]->examination->name}}
         </h1>
+
 
        <form method="post"
              action = " {{route('marks_enter')}}">
