@@ -1,68 +1,1 @@
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Models\Examination;
-use App\Models\FMExamSubject;
-use App\Models\students;
-use Illuminate\Http\Request;
-
-class ExamController extends Controller
-{
-    public function StoreExam(Request $request){
-        $exam = $request->validate([
-            'name'=> 'required'
-            ]
-        );
-
-        Examination::create($exam);
-
-        $fms = $request->validate([
-                'english'=> 'required|numeric',
-                'nepali' => 'required|numeric',
-                'math'=> 'required|numeric',
-                'science'=> 'required|numeric',
-                'social'=> 'required|numeric',
-                'opti'=> 'required|numeric',
-                'optii'=> 'required|numeric',
-            ]
-        );
-
-        $fms['exam_id'] = Examination::where('name', $request->name)->first()->id;
-        FMExamSubject::create($fms);
-        return redirect()->back()->with('message', 'Exam Added Successfully');
-    }
-
-
-    public function ShowExams(){
-
-        $exams = Examination::latest()->limit(5)->get();
-        return view('dashboard.examination', compact('exams'));
-    }
-
-    public function MarkEntryShow(){
-        $fms = FMExamSubject::all();
-        $exams = FMExamSubject::where('exam_id', Examination::latest()->first()->id)->get();
-        $students = students::all();
-        return view('dashboard.enter_marks', compact('students', 'exams', 'fms'));
-    }
-
-    public function MarkStore(Request $request){
-        $data=$request->all();
-        $data = $data['student'];
-        foreach($data as $studentData) {
-            $studentId = $studentData['student_id'];
-            $english = $studentData['english'];
-            $nepali = $studentData['nepali'];
-            $math = $studentData['math'];
-            $science = $studentData['science'];
-            $social = $studentData['social'];
-            $opti = $studentData['opti'];
-            $optii = $studentData['optii'];
-            $fmExamSubjctId=$studentData['examid'];
-
-        }
-        dd($request->all());
-
-    }
-}
+<?phpnamespace App\Http\Controllers;use App\Models\Examination;use App\Models\FMExamSubject;use App\Models\students;use Illuminate\Http\Request;class ExamController extends Controller{    public function StoreExam(Request $request){        $exam = $request->validate([            'name'=> 'required'            ]        );        Examination::create($exam);        $fms = $request->validate([                'english'=> 'required|numeric',                'nepali' => 'required|numeric',                'math'=> 'required|numeric',                'science'=> 'required|numeric',                'social'=> 'required|numeric',                'opti'=> 'required|numeric',                'optii'=> 'required|numeric',            ]        );        $fms['exam_id'] = Examination::where('name', $request->name)->first()->id;        FMExamSubject::create($fms);        return redirect()->back()->with('message', 'Exam Added Successfully');    }    public function ShowExams(){        $exams = Examination::latest()->limit(5)->get();        return view('dashboard.examination', compact('exams'));    }    public function MarkEntryShow(){        $fms = FMExamSubject::all();        $exams = FMExamSubject::where('exam_id', Examination::latest()->first()->id)->get();        $students = students::all();        return view('dashboard.enter_marks', compact('students', 'exams', 'fms'));    }    public function MarkStore(Request $request){        $data=$request->all();        $data = $data['student'];        foreach($data as $studentData) {            $student_id = $studentData['student_id'];            $obtained_marks = [                'english' => $studentData['english'],                'nepali' => $studentData['nepali'],                'math' => $studentData['math'],                'science' => $studentData['science'],                'social' => $studentData['social'],                'opti' => $studentData['opti'],                'optii' => $studentData['optii'],            ];            $fmExamSubjctId=$studentData['examid'];            $fms = FMExamSubject::where('id', $fmExamSubjctId)->first();            $pass_marks = [                'english' => $fms->english * 0.30,                'nepali' => $fms->nepali * 0.30,                'math' => $fms->math * 0.30,                'science' => $fms->science * 0.30,                'social' => $fms->social * 0.30,                'opti' => $fms->opti * 0.30,                'optii' => $fms->optii * 0.30,            ];            $full_marks = [                'english' => $fms->english,                'nepali' => $fms->nepali,                'math' => $fms->math,                'science' => $fms->science,                'social' => $fms->social,                'opti' => $fms->opti,                'optii' => $fms->optii,            ];            $credit_hours =[                'english' => 5,                'nepali' => 5,                'math' => 5,                'science' => 5,                'social' => 4,                'opti' => 4,                'optii' => 4,            ];            $ispassed = true;            foreach($pass_marks as $subject=> $pass_mark){                if($obtained_marks[$subject] < $pass_mark){                    $ispassed = false;                    break;                }            }           if($ispassed){               $total_marks= array_sum($obtained_marks);               $percentage = ($total_marks / array_sum($full_marks)) * 100;               $total_weighted_points =0;               $total_credit_hours = 0;               foreach($obtained_marks as $subject =>$mark){                    $credit = $credit_hours[$subject];                    $grade_point = $this->getGradePoint($percentage);                    $total_weighted_points += $grade_point * $credit;                    $total_credit_hours += $credit;               }               $gpa = round($total_weighted_points / $total_credit_hours, 2);               echo $gpa . "<-gpa \t\t\t Marks->". $mark .  " \n" . $percentage . "%\t\t " . $grade_point;           }else{               $percentage= "NA";                $total_marks= "NA";                $gpa = "NA";           }        }        dd($data);    }    function getGradePoint($mark){        if($mark>= 90)return 4.0;        if($mark>= 80)return 3.6;        if($mark>= 70)return 3.2;        if($mark>= 60)return 2.8;        if($mark>= 50)return 2.4;        if($mark>= 40)return 2.0;        if($mark>= 33)return 1.6;        return 0.0;    }}
