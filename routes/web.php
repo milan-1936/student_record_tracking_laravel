@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
@@ -19,9 +20,9 @@ Route::get('/attendance', function(){
     return view('dashboard.attendance');
 })->name('attendance');
 
-Route::get('/profile', function(){
-    return view('dashboard.student_profile');
-})->name('profile');
+Route::get('/search-student_profile', [StudentProfileController::class, 'getStudentProfile'])->name('search_profile');
+
+Route::get('/profile', [StudentProfileController::class, 'show'])->name('profile');
 
 Route::get('/student', [StudentController::class, 'index'])->name('add_student');
 Route::post('/student/store', [StudentController::class, 'create'])->name('student.store');
@@ -30,4 +31,4 @@ Route::get('/marks_update', [ExamController::class, 'MarkEntryShow'])->name('mar
 Route::post('/marks_enter', [ExamController::class, 'MarkStore'])->name('marks_enter');
 
 Route::post('/examination/create', [ExamController::class, 'StoreExam'])->name('examination.store');
-Route::get('/result/publish', [ExamController::class, 'PublishResult'])->name('result.publish');
+Route::get('/examination/result', [ExamController::class, 'PublishResult'])->name('result.publish');

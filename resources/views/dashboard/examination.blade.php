@@ -60,8 +60,8 @@
                     <i class="ri-add-circle-fill text-xl"></i>
                     <span>Create Exam</span>
                 </a>
-                    <a href="@if($exams->isEmpty() || $marks_table[0]->fm_exam_subject_id == $exams[0]->id ) #  @else {{ route('marks_update') }}  @endif"
-                       class="flex items-center gap-2 @if($exams->isEmpty() || $marks_table[0]->fm_exam_subject_id == $exams[0]->id) bg-indigo-400 @else bg-indigo-600 @endif hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
+                    <a href="@if($exams->isEmpty() || $marks_table->last()->fm_exam_subject_id == $exams->last()->id ) #  @else {{ route('marks_update') }}  @endif"
+                       class="flex items-center gap-2 @if($exams->isEmpty() || $marks_table->last()->fm_exam_subject_id == $exams->last()->id) bg-indigo-400 @else bg-indigo-600 @endif hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
                         <i class="ri-corner-down-left-line text-xl"></i>
                         <span>Enter Marks</span>
                     </a>
@@ -71,6 +71,8 @@
                     <i class="ri-printer-line text-xl"></i>
                     <span>Publish Result</span>
                 </a>
+
+
             </div>
         </div>
     </div>

@@ -3,9 +3,8 @@
 @include('component.alert')
 
 @section('content')
-
-    <h1 class="text-xl font-medium my-4">Result of {{$exam_name->fmExamSubject->examination->name}}</h1>
     <div class="max-w-7xl" id="printableArea">
+        <h1 class="text-xl font-medium my-4 text-center">Result of {{$exam_name->fmExamSubject->examination->name}}</h1>
         <table class="w-full">
             <thead class="w-full bg-slate-800 h-10">
             <th colspan="2" class="text-left">Full marks</th>
@@ -37,14 +36,9 @@
             </thead>
 
             @foreach($result as $res)
-                <tr class="text-center h-14 even:bg-gray-600">
+                <tr class="text-center h-9 even:bg-gray-600">
                     <td>{{$res->student->rn}}</td>
-                    <td class="text-left flex gap-2 items-center">
-                        <div class="flex items-center gap-2  ">
-                            <img src="{{asset('images/photos/'. $res->student->profile)}}" class="w-10 h-10 rounded-full">
-                            {{$res->student->name}}
-                        </div>
-                    </td>
+                    <td class="text-left">{{$res->student->name}}</td>
                     <td>{{$res->eng}}</td>
                     <td>{{$res->nep}}</td>
                     <td>{{$res->math}}</td>
@@ -60,7 +54,14 @@
 
 
         </table>
+
+
         <div class="w-full flex justify-end my-3 gap-5 ">
+            <button class="ring-2 py-2 px-4 rounded-lg ring-indigo-600 flex gap-2 noPrint " onclick=window.history.back() >
+                <i class="ri-arrow-left-line"></i>
+                <span>Back</span>
+            </button>
+
             <button class="bg-indigo-600 px-4 py-2 rounded-lg flex gap-2 noPrint " id="print">
                 <i class="ri-printer-fill"></i>
                 <span>Print</span>

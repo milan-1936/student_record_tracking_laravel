@@ -52,7 +52,11 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-end">
+                    <div class="flex justify-end gap-5">
+                        <button  class=" hover:bg-indigo-700 ring-2 ring-indigo-600 text-white rounded-md px-4 py-2 mt-4 flex items-center transition-colors duration-300" onclick=window.history.back()>
+                            <i class="ri-arrow-left-line text-lg mr-2"></i>
+                            Back
+                        </button>
                         <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-md px-4 py-2 mt-4 flex items-center transition-colors duration-300">
                             <i class="ri-pencil-line text-lg mr-2"></i>
                             Create Exam

@@ -33,4 +33,9 @@ class StudentController extends Controller
         return redirect()->back()->with('message',  'student Added Successfully');
     }
 
+    public function show(){
+        $students = students::all();
+        return view('dashboard.students', compact('students'));
+    }
+
 }

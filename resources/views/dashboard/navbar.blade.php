@@ -143,31 +143,31 @@
 
         {{-- Navigation --}}
         <nav class="flex flex-col space-y-1 text-base font-medium">
-            <a href="{{ route('dashboard') }}" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="{{ route('dashboard') }}" class="sidebar-item @if(Route::is('dashboard')) active @endif flex items-center gap-3 px-4 py-3 rounded-md">
                 <i class="ri-dashboard-line text-xl"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="{{ route('examination') }}" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="{{ route('examination') }}" class="sidebar-item  @if(Route::is('examination*')) active @endif flex items-center gap-3 px-4 py-3 rounded-md">
                 <i class="ri-book-open-line text-xl"></i>
                 <span>Examination</span>
             </a>
-            <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="#" class="sidebar-item flex items-center  @if(Route::is('#')) active @endif gap-3  px-4 py-3 rounded-md">
                 <i class="ri-money-dollar-circle-line text-xl"></i>
                 <span>Fee Collection</span>
             </a>
-            <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="#" class="sidebar-item flex items-center  @if(Route::is('#')) active @endif gap-3 px-4 py-3 rounded-md">
                 <i class="ri-chat-1-line text-xl"></i>
                 <span>Send Messages</span>
             </a>
-            <a href="{{ route('attendance') }}" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="{{ route('attendance') }}" class="sidebar-item  @if(Route::is('attendance*')) active @endif flex items-center gap-3 px-4 py-3 rounded-md">
                 <i class="ri-fingerprint-line text-xl"></i>
                 <span>Attendance</span>
             </a>
-            <a href="{{ route('profile') }}" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="{{ route('profile') }}" class="sidebar-item  @if(Route::is('profile*')) active @endif flex items-center gap-3 px-4 py-3 rounded-md">
                 <i class="ri-profile-line text-xl"></i>
                 <span>Student Profiles</span>
             </a>
-            <a href="{{ route('add_student') }}" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-md">
+            <a href="{{ route('add_student') }}" class="sidebar-item  @if(Route::is('add_student*')) active @endif flex items-center gap-3 px-4 py-3 rounded-md">
                 <i class="ri-add-line text-xl"></i>
                 <span>Add Student</span>
             </a>
