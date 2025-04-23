@@ -30,3 +30,4 @@ Route::get('/marks_update', [ExamController::class, 'MarkEntryShow'])->name('mar
 Route::post('/marks_enter', [ExamController::class, 'MarkStore'])->name('marks_enter');
 
 Route::post('/examination/create', [ExamController::class, 'StoreExam'])->name('examination.store');
+Route::get('/result/publish', [ExamController::class, 'PublishResult'])->name('result.publish');

@@ -11,6 +11,7 @@ class ObtMarks extends Model
         return $this->belongsTo(students::class);
     }
 
+
     public function fmExamSubject(){
         return $this->belongsTo(FMExamSubject::class);
     }

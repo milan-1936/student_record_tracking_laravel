@@ -6,7 +6,6 @@
             Enter Marks of the {{$exams[0]->examination->name}}
         </h1>
 
-
        <form method="post"
              action = " {{route('marks_enter')}}">
            @csrf

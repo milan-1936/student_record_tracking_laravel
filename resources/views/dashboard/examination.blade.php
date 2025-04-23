@@ -38,7 +38,7 @@
                 @endforeach
             </div>
 
-            
+
 {{--            <h1>{{$marks_table[0]->fm_exam_subject_id}}</h1>--}}
             <hr class="border-indigo-700 my-5">
 
@@ -66,7 +66,7 @@
                         <span>Enter Marks</span>
                     </a>
 
-                <a href="#"
+                <a href="{{ route('result.publish') }}"
                    class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded-xl">
                     <i class="ri-printer-line text-xl"></i>
                     <span>Publish Result</span>
