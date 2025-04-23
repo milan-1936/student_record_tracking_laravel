@@ -85,6 +85,40 @@
             transition: all 0.3s ease;
         }
     </style>
+
+{{--    this style is for printing option--}}
+    <style>
+        @media print{
+            @page{
+                size: A4 landscape;
+                margin:1cm;
+            }
+
+            /*body{*/
+            /*    -webkit-print-color-adjust: exact !important; !* Ensures Tailwind or bg colors show *!*/
+            /*    print-color-adjust: exact !important*/
+            /*}*/
+
+            #printableArea{
+                width: 100%;
+                height: 100%;
+            }
+
+           .noPrint{
+               display:none;
+           }
+
+            #printableArea, #printableArea *{
+                visibility: visible;
+            }
+
+            #printableArea{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-gray-300 h-screen overflow-hidden">
 

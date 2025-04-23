@@ -3,12 +3,27 @@
 @include('component.alert')
 
 @section('content')
-    <h1>{{$exam_name->fmExamSubject->examination->name}}</h1>
-    <div class="max-w-7xl">
+
+    <h1 class="text-xl font-medium my-4">Result of {{$exam_name->fmExamSubject->examination->name}}</h1>
+    <div class="max-w-7xl" id="printableArea">
         <table class="w-full">
-            <thead>
+            <thead class="w-full bg-slate-800 h-10">
+            <th colspan="2" class="text-left">Full marks</th>
+            <th>{{$exam_name->fmExamSubject->english}}</th>
+            <th>{{$exam_name->fmExamSubject->nepali}}</th>
+            <th>{{$exam_name->fmExamSubject->math}}</th>
+            <th>{{$exam_name->fmExamSubject->science}}</th>
+            <th>{{$exam_name->fmExamSubject->social}}</th>
+            <th>{{$exam_name->fmExamSubject->opti}}</th>
+            <th>{{$exam_name->fmExamSubject->optii}}</th>
+            <th></th>
+            <th></th>
+            <th></th>
+
+            </thead>
+            <thead class="h-12 bg-indigo-700 text-white">
             <th>R.N.</th>
-            <th>Name</th>
+            <th class="text-left">Name</th>
             <th>English</th>
             <th>Nepali</th>
             <th>Math</th>
@@ -22,7 +37,7 @@
             </thead>
 
             @foreach($result as $res)
-                <tr class="text-center h-14 odd:bg-gray-600">
+                <tr class="text-center h-14 even:bg-gray-600">
                     <td>{{$res->student->rn}}</td>
                     <td class="text-left flex gap-2 items-center">
                         <div class="flex items-center gap-2  ">
@@ -45,11 +60,27 @@
 
 
         </table>
-        <div class="w-full flex justify-end my-3 ">
-            <button class="bg-indigo-600 px-4 py-2 rounded-lg flex gap-2">
+        <div class="w-full flex justify-end my-3 gap-5 ">
+            <button class="bg-indigo-600 px-4 py-2 rounded-lg flex gap-2 noPrint " id="print">
                 <i class="ri-printer-fill"></i>
                 <span>Print</span>
             </button>
+
+            <button class="bg-indigo-600 px-4 py-2 rounded-lg flex gap-2 noPrint" >
+                <i class="ri-mail-send-fill"></i>
+                <span>Publish Result</span>
+            </button>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+           $('#print').on('click', function(){
+            var printContents = $('#printableArea').html();
+            var originalContents = $('body').html();
+            document.body.innerHTML = printContents;
+            window.print();
+            location.reload();
+           });
+        });
+    </script>
 @endsection
