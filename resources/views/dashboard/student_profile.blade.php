@@ -8,14 +8,23 @@
 @section('content')
     <div class="w-full mt-5 mx-5 bg-gray-900 text-gray-200 p-6 rounded-lg shadow-lg">
         <div class="flex w-full">
-            <div class="flex items-center gap-2 border-slate-100   w-full px-5">
-                <label for="search" class="cursor-pointer">
-                    <i class="ri-search-line text-blue-500   text-xl"></i>
-                </label>
-                <input type="text" id="search"  name="value" class=" w-full h-10 rounded-lg placeholder-text-slate-200  border-slate-300 focus:outline-none focus:border-slate-500 px-4" placeholder="Search by the name of student">
-                <button id="cross" class="cursor-pointer">
-                    <i class="ri-close-line text-blue-500 text-xl"></i>
-                </button>
+            <div class="w-full">
+                <div class="flex items-center gap-2 border-slate-100   w-full px-5">
+                    <label for="search" class="cursor-pointer">
+                        <i class="ri-search-line text-blue-500   text-xl"></i>
+                    </label>
+                    <input type="text" id="search"  name="name" class=" w-full h-10 rounded-lg placeholder-text-slate-200  border-slate-300 focus:outline-none focus:border-slate-500 px-4" placeholder="Search by the name of student">
+                    <button id="cross" class="cursor-pointer">
+                        <i class="ri-close-line text-blue-500 text-xl"></i>
+                    </button>
+                </div>
+                <div class="">
+                        <table class="w-full mx-10 h-10 z-auto  absolute">
+                            <tbody id="table_data">
+                            </tbody>
+
+                        </table>
+                </div>
             </div>
         </div>
         <div class="flex justify-between gap-4 mt-5">
@@ -127,6 +136,7 @@
         });
 
         $(document).ready(function() {
+            $('#table_data_container').hide();
             $('#search').on('keyup', function() {
                console.log($(this).val());
                 $.ajax({
@@ -136,8 +146,22 @@
                         search: $(this).val()
                     },
                     success: function(data) {
-                        console.log("hello");
+                        console.log(data);
+                        $('#table_data_container').show();
+                        if(data.length === 0){
+                            $('#table_data').append('<tr class="items-center text-white w-full h-10 even:bg-gray-600"><td>No data found</td></tr>');
+                        }
+                        $('#table_data').empty();
+                        $.each(data.data, function(index, value) {
+                            console.log( value.name);
+                            $('#table_data').append('' +
+                                '<tr class="items-center flex text-white max-w-7xl px-5 h-10 even:bg-gray-600 odd:bg-gray-900">' +
+                                    '<td>' + value.name + '</td>' +
+                                '</tr>');
+                        });
+
                     },
+
 
                     error: function(xhr) {
                         console.log(xhr.responseText);
