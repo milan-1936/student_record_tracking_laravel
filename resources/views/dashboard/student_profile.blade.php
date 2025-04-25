@@ -27,17 +27,20 @@
                 </div>
             </div>
         </div>
+        @if(isset($student))
         <div class="flex justify-between gap-4 mt-5">
             <div class="flex gap-5">
                 <div class="bg-gray-800 p-3 rounded-lg shadow-md">
-                    <img src="{{asset('images/photos/pp.jpg')}}" alt="PP size" class="w-40 rounded-md border-2 border-indigo-500">
-                    <h1 class="text-2xl font-bold text-center text-white mt-2">Soneesha</h1>
+                    <img src="{{asset('images/photos/'. $student->profile)}}" alt="PP size" class="w-40 rounded-md border-2 border-indigo-500">
+                    <h1 class="text-2xl font-bold text-center text-white mt-2">{{$student->name}} </h1>
                 </div>
                 <div class="flex flex-col gap-2 bg-gray-800 p-4 rounded-lg shadow-md">
                     <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Class:</span> 10</h1>
-                    <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Name:</span> Sudeep Ghimire Chhetri</h1>
-                    <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Address:</span> Devchuli, Nawalpur</h1>
-                    <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Contact:</span> +977 9840079139</h1>
+                    <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Name:</span> {{$student->guardian}} </h1>
+                    <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Address:</span>
+                        {{$student->address}}</h1>
+                    <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Contact:</span> +977
+                        {{$student->contact}}</h1>
                 </div>
             </div>
             <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow-md">
@@ -57,6 +60,38 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="flex justify-between gap-4 mt-5">
+                <div class="flex gap-5">
+                    <div class="bg-gray-800 p-3 rounded-lg shadow-md">
+                        <img src="{{asset('images/photos/pp.jpg')}}" alt="PP size" class="w-40 rounded-md border-2 border-indigo-500">
+                        <h1 class="text-2xl font-bold text-center text-white mt-2">Student Name </h1>
+                    </div>
+                    <div class="flex flex-col gap-2 bg-gray-800 p-4 rounded-lg shadow-md">
+                        <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Class:</span> 10</h1>
+                        <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Name:</span> </h1>
+                        <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Address:</span> Devchuli, Nawalpur</h1>
+                        <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Contact:</span> +977 9840079139</h1>
+                    </div>
+                </div>
+                <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h1 class="text-xl text-center font-bold text-white mb-4">Overall School Performance</h1>
+                    <div class="flex w-full justify-between mb-4">
+                        <a href="#" class="text-gray-800 hover:text-gray-900 transition-colors font-medium bg-indigo-500 px-3 rounded-full">All</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">English</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">Nepali</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">Math</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">Science</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">Social</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">OPT I</a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">OPT II</a>
+                    </div>
+                    <div class="w-full pb-5">
+                        @include('component.progressionchart')
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="mt-6 bg-gray-800 p-4 rounded-lg shadow-md">
             <h2 class="text-xl font-bold text-white mb-4">Examination Results</h2>
             <div class="overflow-x-auto">
@@ -76,22 +111,44 @@
                         <th class="p-3 rounded-tr-lg">REMARK</th>
                     </tr>
                     </thead>
-                    <tbody class="text-gray-300">
-                    <tr class="border-b border-gray-700 h-14 hover:bg-gray-700 transition-colors">
-                        <td class="p-3">First Terminal</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3">80</td>
-                        <td class="p-3"><span class="font-bold text-indigo-400">4.0</span></td>
-                        <td class="p-3"><span class="font-bold text-indigo-400">1</span></td>
-                        <td class="p-3"><span class="font-bold text-green-400">Excellent</span></td>
-                    </tr>
-                    <!-- You can add more rows here -->
-                    </tbody>
+                    @if(isset($marks))
+                        <tbody class="text-gray-300">
+                        @foreach($marks as $mark)
+
+                            <tr class="border-b border-gray-700 h-14 hover:bg-gray-700 transition-colors">
+                                <td class="p-3">{{$mark[0]->fmExamSubject->examination->name}}</td>
+                                <td class="p-3">{{$mark[0]->eng}}</td>
+                                <td class="p-3">{{$mark[0]->nep}}</td>
+                                <td class="p-3">{{$mark[0]->math}}</td>
+                                <td class="p-3">{{$mark[0]->sci}}</td>
+                                <td class="p-3">{{$mark[0]->soc}}</td>
+                                <td class="p-3">{{$mark[0]->opti}}</td>
+                                <td class="p-3">{{$mark[0]->optii}}</td>
+                                <td class="p-3"><span class="font-bold text-indigo-400">{{$mark[0]->grade}}</span></td>
+                                <td class="p-3"><span class="font-bold text-indigo-400">{{$mark[0]->rank}}</span></td>
+                                <td class="p-3"><span class="font-bold text-green-400">Excellent</span></td>
+                            </tr>
+                        @endforeach
+                        <!-- You can add more rows here -->
+                        </tbody>
+                    @else
+                        <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-700 h-14 hover:bg-gray-700 transition-colors">
+                            <td class="p-3">First Terminal</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3">80</td>
+                            <td class="p-3"><span class="font-bold text-indigo-400">4.0</span></td>
+                            <td class="p-3"><span class="font-bold text-indigo-400">1</span></td>
+                            <td class="p-3"><span class="font-bold text-green-400">Excellent</span></td>
+                        </tr>
+                        <!-- You can add more rows here -->
+                        </tbody>
+                    @endif
                 </table>
             </div>
             <div class="w-full flex justify-end mt-5">
@@ -156,8 +213,8 @@
                             console.log( value.name);
                             $('#table_data').append('' +
                                 '<tr class="items-center flex text-white max-w-7xl px-5 h-10 even:bg-gray-600 odd:bg-gray-900">' +
-                                    '<td>' + value.name + '</td>' +
-                                '</tr>');
+                                '<td><a href="/student/' + value.id + '" class="w-full">' + value.name + '</a></td>' +
+                            '</tr>');
                         });
 
                     },

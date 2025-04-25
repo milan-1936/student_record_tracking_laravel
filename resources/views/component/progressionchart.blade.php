@@ -6,7 +6,7 @@
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
 
-        const label = @json($exams);
+        const label = [1];
 
         // Optional: resize canvas to match container
         Chart.defaults.responsive = true;

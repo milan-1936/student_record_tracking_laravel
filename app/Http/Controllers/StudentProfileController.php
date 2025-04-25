@@ -25,6 +25,15 @@ class StudentProfileController extends Controller
         ]);
     }
 
+    public function showStudentProfile($id)
+    {
+        $student = students::findOrFail($id);
+        $marks = ObtMarks::where('student_id', $id)->get()->groupBy('fm_exam_subject_id');
+        return view('dashboard.student_profile', compact('student', 'marks'));
+    }
+
+
+
 
 
 

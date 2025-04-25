@@ -21,6 +21,7 @@ Route::get('/attendance', function(){
 })->name('attendance');
 
 Route::get('/search-student_profile', [StudentProfileController::class, 'getStudentProfile'])->name('search_profile');
+Route::get('/student/{id}', [StudentProfileController::class, 'showStudentProfile'])->name('student_profile');
 
 Route::get('/profile', [StudentProfileController::class, 'show'])->name('profile');
 
