@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+
         @if(isset($student))
         <div class="flex justify-between gap-4 mt-5">
             <div class="flex gap-5">
@@ -86,14 +87,17 @@
                         <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">OPT I</a>
                         <a href="#" class="text-gray-400 hover:text-indigo-300 transition-colors font-medium">OPT II</a>
                     </div>
+
                     <div class="w-full pb-5">
+
                         @include('component.progressionchart')
                     </div>
+
                 </div>
             </div>
         @endif
         <div class="mt-6 bg-gray-800 p-4 rounded-lg shadow-md">
-            <h2 class="text-xl font-bold text-white mb-4">Examination Results</h2>
+            <h2 class="text-xl font-bold text-white mb-4">Examination Results </h2>
             <div class="overflow-x-auto">
                 <table class="w-full mt-2">
                     <thead class="text-left bg-gray-700 text-gray-200">

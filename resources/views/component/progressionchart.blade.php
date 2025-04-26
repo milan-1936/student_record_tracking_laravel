@@ -6,7 +6,14 @@
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
 
-        const label = [1];
+       const label = Object.values(@json($exam_name));
+        label.forEach(exam => console.log(exam.name));
+        console.log(label);
+        const data = Object.values(@json($gpa));
+        console.log(data)
+
+        console.log(label.map(exam=>exam.name));
+
 
         // Optional: resize canvas to match container
         Chart.defaults.responsive = true;
@@ -15,10 +22,10 @@
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: label.map(exam => exam.name), // Use the exam names as labels
+                labels: label, // Use the exam names as labels
                 datasets: [{
                     label: 'CGPA',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    data: data, // Use the GPA values as data
                     borderColor: 'rgba(56, 100, 255, 1)',
                     borderWidth: 3,
                     fill: true,

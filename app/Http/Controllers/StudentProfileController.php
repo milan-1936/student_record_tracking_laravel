@@ -29,7 +29,14 @@ class StudentProfileController extends Controller
     {
         $student = students::findOrFail($id);
         $marks = ObtMarks::where('student_id', $id)->get()->groupBy('fm_exam_subject_id');
-        return view('dashboard.student_profile', compact('student', 'marks'));
+//        // Adding elements to an array using a foreach loop
+        $gpa = [];
+        $exam_name = [];
+            foreach ($marks as $key => $m) {
+                $gpa[$key] = $m->first()->grade ?? null;
+                $exam_name[$key] = $m->first()->fmExamSubject->examination->name ?? null;
+            }
+        return view('dashboard.student_profile', compact('student', 'marks', 'gpa', 'exam_name'));
     }
 
 
