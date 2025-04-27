@@ -90,7 +90,8 @@
 
                     <div class="w-full pb-5">
 
-                        @include('component.progressionchart')
+                            @include('component.progressionchart')
+
                     </div>
 
                 </div>
