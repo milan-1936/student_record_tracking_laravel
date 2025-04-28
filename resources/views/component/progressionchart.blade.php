@@ -44,5 +44,5 @@
                 }
             });
         </script>
-        @endif
+    @endif
 </div>

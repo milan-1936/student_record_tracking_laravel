@@ -1,3 +1,4 @@
+@php use App\Services\SmsService; @endphp
 @extends('dashboard.navbar')
 @section('content')
     <div class="flex bg-gray-900 h-full w-full rounded-lg shadow-lg">
@@ -16,6 +17,11 @@
                     </button>
                 </div>
             </div>
+
+            @php
+            $sms = new SmsService();
+            $sms->getBalance()
+            @endphp
 
             {{-- Overview Card section --}}
             <div class="my-5 gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">

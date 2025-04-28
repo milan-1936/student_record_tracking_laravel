@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\StudentController;
@@ -16,9 +17,8 @@ Route::get('/examination/create', function(){
     return view('dashboard.create_exam');
 })->name('examination.create');
 
-Route::get('/attendance', function(){
-    return view('dashboard.attendance');
-})->name('attendance');
+Route::get('/attendance', [AttendanceController::class, 'show'])->name('attendance');
+Route::post('/attendance/update', [AttendanceController::class, 'update'])->name('attendance_update');
 
 Route::get('/search-student_profile', [StudentProfileController::class, 'getStudentProfile'])->name('search_profile');
 Route::get('/student/{id}', [StudentProfileController::class, 'showStudentProfile'])->name('student_profile');
