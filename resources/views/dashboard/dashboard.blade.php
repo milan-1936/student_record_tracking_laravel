@@ -1,11 +1,13 @@
 @php use App\Services\SmsService; @endphp
 @extends('dashboard.navbar')
 @section('content')
+
     <div class="flex bg-gray-900 h-full w-full rounded-lg shadow-lg">
         <div class="wrapper w-full px-4 md:px-6">
             {{-- Dashboard Title --}}
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl font-bold text-white">Dashboard Overview</h1>
+
                 <div class="flex gap-2">
                     <button class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1.5 rounded-md flex items-center gap-1 text-sm transition-colors">
                         <i class="ri-calendar-line"></i>
@@ -18,25 +20,21 @@
                 </div>
             </div>
 
-            @php
-            $sms = new SmsService();
-            $sms->getBalance()
-            @endphp
 
             {{-- Overview Card section --}}
             <div class="my-5 gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                 @php
                     $array = [
                         [
-                            'heading' => "अनुपस्थित विद्यार्थी",
-                            'main' => 19,
+                            'heading' => 'Total SMS Credit Available',
+                            'main' => $balance,
                             'sub' => 2025,
-                            'icon' => 'ri-user-unfollow-line',
+                            'icon' => 'ri-message-line',
                             'color' => 'bg-indigo-600',
                             'textColor' => 'text-indigo-400'
                         ],
                         [
-                            'heading' => "Total Passed Student",
+                            'heading' => "Passed Student",
                             'main' => '78%',
                             'sub' => '40',
                             'icon' => 'ri-medal-line',

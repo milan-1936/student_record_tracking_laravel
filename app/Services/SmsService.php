@@ -33,12 +33,12 @@ class SmsService
 //    https://sms.aakashsms.com/sms/v4/available-credit
 
      public function getBalance(){
-         $response = Http::withOptions([
-             'verify' => 'C:\xampp\apache\bin\curl-ca-bundle.crt',
-         ])->post('https://sms.aakashsms.com/sms/v4/credit', [
-             'auth_token' => $this->apiKey,
-         ]);
-         dd($response->json());
+        $response = Http::withOptions([
+             'headers' => [
+                 'auth-token' => $this->apiKey,
+             ],
+             'verify' => 'C:\xampp\apache\bin\curl-ca-bundle.crt'
+         ])->get('https://sms.aakashsms.com/sms/v4/available-credit');
          return $response->json();
      }
 }

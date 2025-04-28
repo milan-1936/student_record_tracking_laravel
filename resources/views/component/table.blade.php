@@ -32,7 +32,7 @@
                 <td class="py-4">{{ $student['guardian'] }}</td>
 
                 <td class="py-4">
-                    <a href="#" class="inline-block">
+                    <a href="{{ route('student_profile', $student['id']) }}" class="inline-block">
                         <button class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow">
                             View
                         </button>
@@ -41,5 +41,10 @@
             </tr>
         @endforeach
         </tbody>
+
+
     </table>
+</div>
+<div>
+    {{ $students->links() }}
 </div>

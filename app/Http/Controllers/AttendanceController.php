@@ -10,9 +10,11 @@ use Illuminate\Http\Request;
 class AttendanceController extends Controller
 {
     public function show(){
+        $date = date('Y-m-d');
+        $date_exists = Attendance::where('date', $date)->exists();
         $attendances = Attendance::all();
 //        dd($attendances);
-        return view('dashboard.attendance', compact('attendances'));
+        return view('dashboard.attendance', compact('attendances', 'date_exists'));
     }
 
     public function update(Request $request){
@@ -20,6 +22,7 @@ class AttendanceController extends Controller
         foreach ($request->except('_token') as $key => $status) {
             // Extract student id
             $studentId = (int) str_replace('present', '', $key);
+            $today = date('Y-m-d');
 
             // Find the attendance record
             $attendance = Attendance::find($studentId);
@@ -33,6 +36,7 @@ class AttendanceController extends Controller
                 } elseif ($status == 'L') {
                     $attendance->leave += 1;
                 }
+                $attendance->date = $today;
 
                 $attendance->save();
             }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('attendance');
             $table->integer('leave');
             $table->integer('absent');
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
