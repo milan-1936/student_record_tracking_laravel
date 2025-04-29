@@ -42,6 +42,41 @@
                         {{$student->address}}</h1>
                     <h1 class="text-gray-300"><span class="text-indigo-400 font-semibold">Contact:</span> +977
                         {{$student->contact}}</h1>
+                    <div class="flex gap-2 flex-col">
+                        <div class=" w-full h-23 bg-slate-700 rounded-xl flex flex-col">
+                           <div class="p-2">
+                               <div class="flex justify-between ">
+                                   <h1>Attendance</h1>
+                                   <i class="ri-user-line bg-indigo-500 p-2 rounded-lg"></i>
+                               </div>
+                               <h1 class="px-2" ><span class="text-indigo-400 text-4xl">{{$attendance[0]->attendance}}</span> Days</h1>
+                           </div>
+                        </div>
+
+                        <div class=" w-full h-23 bg-slate-700 rounded-xl flex flex-col">
+                            <div class="p-2">
+                                <div class="flex justify-between ">
+                                    <h1>Leave</h1>
+
+                                    <i class="ri-mail-send-fill bg-indigo-500 p-2 rounded-lg"></i>
+                                </div>
+                                <h1 class="px-2" ><span class="text-indigo-400 text-4xl">{{$attendance[0]->leave}}</span> Days</h1>
+                            </div>
+                        </div>
+
+                        <div class=" w-full h-23 bg-slate-700 rounded-xl flex flex-col">
+                            <div class="p-2">
+                                <div class="flex justify-between ">
+                                    <h1>Absent</h1>
+                                    <i class="ri-user-unfollow-line bg-indigo-500 p-2 rounded-lg"></i>
+                                </div>
+                                <h1 class="px-2" ><span class="text-indigo-400 text-4xl">{{$attendance[0]->absent}}</span> Days</h1>
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
             </div>
             <div class="flex-1 bg-gray-800 p-4 rounded-lg shadow-md">

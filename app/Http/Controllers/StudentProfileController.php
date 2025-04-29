@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\ObtMarks;
 use App\Models\students;
 use Illuminate\Http\Request;
@@ -27,6 +28,8 @@ class StudentProfileController extends Controller
 
     public function showStudentProfile($id)
     {
+        $attendance = Attendance::where('student_id', $id)->get();
+
         $student = students::findOrFail($id);
         $marks = ObtMarks::where('student_id', $id)->get()->groupBy('fm_exam_subject_id');
 //        // Adding elements to an array using a foreach loop
@@ -36,7 +39,7 @@ class StudentProfileController extends Controller
                 $gpa[$key] = $m->first()->grade ?? null;
                 $exam_name[$key] = $m->first()->fmExamSubject->examination->name ?? null;
             }
-        return view('dashboard.student_profile', compact('student', 'marks', 'gpa', 'exam_name'));
+        return view('dashboard.student_profile', compact('student', 'marks', 'gpa', 'exam_name', 'attendance'));
     }
 
 
